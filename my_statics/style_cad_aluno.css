@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Open+Sans:wght@300;400;500;600&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #e38a3cdb;
+}
+
+.container {
+    width: 90%;
+    height: 90vh;
+    display: grid; /* Alterado para grid */
+    grid-template-columns: 40% 60%; /* Dividindo em duas colunas */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.212);
+    overflow: hidden;
+}
+
+.form-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fde3a7d7;
+    padding: 1rem;
+}
+
+.form-image img {
+    width: 100%;
+    max-width: 31rem;
+}
+
+.form {
+    display: grid; /* Alterado para grid */
+    grid-template-rows: 1fr 1fr; /* Definindo as linhas da grade */
+    justify-items: center; /* Centralizando horizontalmente */
+    align-items: center; /* Centralizando verticalmente */
+    background-color: #fff;
+    padding: 2rem;
+    overflow-y: auto;
+}
+.form-header {
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.form-header h1::after {
+    content: '';
+    display: block;
+    width: 5rem;
+    height: 0.3rem;
+    background-color: #ff7700;
+    margin: 0 auto;
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+}
+
+.input-group {
+    width: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
+}
+
+.input-box input,
+.input-box select {
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 1px 1px 6px #0000001c;
+    font-size: 0.8rem;
+    width: 100%;
+}
+
+.input-box input:hover {
+    background-color: #eeeeee75;
+}
+
+.input-box input:focus-visible {
+    outline: 1px solid #ff7700;
+}
+
+.input-box label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #000000c0;
+}
+
+.input-box input::placeholder {
+    color: #000000be;
+}
+
+.continue-button {
+    width: 100%;
+    margin-top: 2.5rem;
+}
+
+.continue-button button {
+    width: 100%;
+    border: none;
+    background-color: #ff7700;
+    padding: 0.62rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.continue-button button:hover {
+    background-color: #e38a3cdb;
+}
+
+.continue-button button a {
+    text-decoration: none;
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: #fff;
+}
