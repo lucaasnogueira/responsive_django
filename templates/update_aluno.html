@@ -1,0 +1,39 @@
+{% extends 'nav_bar_interno.html' %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'style_cad_aluno.css' %}">
+    <div class="container">
+        <div class="form-image">
+            <img src="{% static 'Teacher student-pana.svg' %}">
+        </div>
+
+
+        <div class="form">
+            <div class="form-header">
+                <div class="title">
+                    <h1>Atualizando cadastro: </h1></div>    
+            </div>
+
+            <form action="{% url 'aluno_update' aluno.id %}" method="POST">
+                <div class="input-group">
+                    <div class="input-box">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                    </div>
+                    <div class="continue-button">
+                      <button type="submit"><a>Cadastrar</a></button>
+                    </div>
+                </div>
+            </form>
+            <div class="delete-button">
+                <button type="submit"><a href="{% url 'aluno_delete' aluno.id %}">Deletar</a></button>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+
+
+

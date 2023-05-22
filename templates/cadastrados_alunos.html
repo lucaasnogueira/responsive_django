@@ -1,9 +1,84 @@
-<h1>Lista de Alunos cadastrados</h1>
-<ul>
-{% for aluno in alunos %}
+{% extends 'nav_bar_interno.html' %}
+{% load static %}
 
-<li> {{ aluno.nome }} </li>
+{% block content %}
 
-{% endfor  %}
+<link rel="stylesheet" href="{% static 'style_lista_alunos.css' %}">
+<div class="container">
+    <div class="list">
+        <div class="list-header">
+            <div class="title">
+                <h1>Lista de matriculados</h1>
+            </div>
+        </div>
 
-</ul>
+        <div class="filter-container">
+            <input type="text" class="filter-input" placeholder="Buscar" onkeyup="filterTable()">
+            <button class="filter-button"><a>Buscar<a></button>
+        </div>
+
+        <div class="button-container">
+            <div class="button-add">
+                <button><a href="{% url 'aluno_cadastrar' %}">Cadastrar</a></button>
+            </div>
+        </div>
+        
+        <div class="list-group">
+            <table id="alunos-table" class="list-box">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>E-mail</th>
+                    <th>Telefone</th>
+                    <th>Escola</th>
+                    <th>Série</th>
+                    <th>Nível</th>
+                </tr>
+                
+                {% for aluno in alunos %}
+                <tr>
+                    <td><a id="id" href="{% url 'aluno_update' aluno.id %}">{{ aluno.id }}</a></td>
+                    <td>{{ aluno.nome }}</td>
+                    <td>{{ aluno.email }}</td>
+                    <td>{{ aluno.telefone }}</td>
+                    <td>{{ aluno.escola }}</td>
+                    <td>{{ aluno.serie }}</td>
+                    <td>{{ aluno.nivel }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function filterTable() {
+        var input, filter, table, tr, td, i, j, txtValue;
+        input = document.getElementsByClassName("filter-input")[0];
+        filter = input.value.toUpperCase();
+        table = document.getElementById("alunos-table");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            var match = false;
+            td = tr[i].getElementsByTagName("td");
+
+            for (j = 0; j < td.length; j++) {
+                if (td[j]) {
+                    txtValue = td[j].textContent || td[j].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        match = true;
+                        break;
+                    }
+                }
+            }
+
+            if (match) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+</script>
+{% endblock %}

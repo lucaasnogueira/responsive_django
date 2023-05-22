@@ -9,7 +9,7 @@ from .models import (
 
 class AlunoAdmin(admin.ModelAdmin):
     list_display=('id', 'nome', 'email', 'telefone')
-    list_filter=('nome',)
+    list_filter=('nome','escola','serie')
     search_fields=('id,','nome', 'email', 'telefone')
 
 admin.site.register(Escola)

@@ -20,3 +20,25 @@ def aluno_novo(request):
         form.save()
     return redirect('aluno_cadastrado')
 
+def aluno_update(request, id):
+    data ={}
+    aluno = Aluno.objects.get(id=id)
+    form = AlunoForm(request.POST or None, instance=aluno)
+    data['aluno'] = aluno
+    data['form'] = form
+
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('aluno_cadastrado')
+    else:
+        return render(request, 'update_aluno.html', data)
+    
+
+def aluno_delete(request, id):
+    aluno = Aluno.objects.get(id=id)
+    if request.method == 'POST':
+        aluno.delete()
+        return redirect('aluno_cadastrado')
+    else:
+        return render(request, 'delete_confirm.html', {'aluno':aluno})
