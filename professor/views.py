@@ -41,4 +41,4 @@ def professor_delete(request, id):
         professor.delete()
         return redirect('professor_cadastrado')
     else:
-        return render(request, 'delete_confirm.html', {'professor':professor})
+        return render(request, 'delete_professor.html', {'professor':professor})

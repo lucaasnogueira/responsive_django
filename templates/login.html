@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'style_login.css' %}">
-    <title>login</title>
+    <title>Login</title>
 </head>
 <body>
     <div class="container">
@@ -22,20 +22,22 @@
             </div>
     
             <div class="login-group">
-                <div class="card-login">
-                    <div class="login-box">
-                        <label for="usuario">Usuário</label>
-                        <input type="text" name="usuario" placeholder="Usuário">
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="card-login">
+                        <div class="login-box">
+                            <label for="username">Usuário</label>
+                            <input type="text" name="username" placeholder="Usuário" required>
+                        </div>
+                        <div class="login-box">
+                            <label for="password">Senha</label>
+                            <input type="password" name="password" placeholder="Senha" required>
+                        </div>
+                        <button class="btn-login" type="submit">Login</button>
                     </div>
-                    <div class="login-box">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha">
-                    </div>
-                    <button class="btn-login" type='submit'><a>Login</a></button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-    
 </body>
 </html>

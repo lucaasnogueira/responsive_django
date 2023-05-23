@@ -1,0 +1,7 @@
+<h2>Favor confirmar delete: {{ professor }}</h2>
+
+<form method="POST" action={% url 'professor_delete' professor.id %}>
+    {% csrf_token %}
+    <button type="submit">Deletar</button>
+
+</form>

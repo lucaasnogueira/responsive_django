@@ -9,5 +9,17 @@ def home (request):
 def welcome (request):
     return render(request, 'welcome.html')
 
-def login(request):
-    return render(request, 'login.html')
+def login_view(request):
+    if request.method == "GET":
+        return render(request, 'login.html')
+    elif request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return render(request, 'welcome.html')
+        else:
+            return HttpResponse('Usuário não cadastrado')
